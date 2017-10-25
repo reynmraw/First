@@ -8,10 +8,10 @@
 
 pthread_t tid[3];
 char n1,n2;
-int bom [16];
+int bom[17], bom2[17];
 int pasang;
-int f;
-
+int f,g;
+int main1=1, main2=0;
 void* playandcount(void *arg)
 {
     unsigned long i=0;
@@ -22,35 +22,42 @@ void* playandcount(void *arg)
 	printf ("masukkan nama pemain 1:\n");
 	scanf ("%c",&n1);
 
-       	while (main1==1)
+       	while (main1=1)
        	{
           	printf("letakkan bomb pada lubang 1-16\n");
 		for (int i=0;i<4;i++){
 			printf ("masang?");
 			scanf ("%d",&pasang);
-			if (pasang == 1){
-				printf ("pasang dimana")
+			if (pasang = 1){
+				printf ("pasang dimana");
 				scanf ("%d", &f);
 				bom[f]=1;
-		main1==0;
-		main2==1;
-	};
+			}
+		}
+		main1=0;
+		main2=1;
+	}
 	exit(0);
     }
 
 
     else if(pthread_equal(id,tid[1]))
     {
-	for(statkep;statkep>0;)
+	while (main2=1)
 	{
-		printf("			nyawa kepiting %i\n",statkep);
-		fflush(stdout);
-		sleep(20);
-		statkep-=10;
+		printf ("letakkan bomb pada lubang 1-16\n");
+		for (int i=0;i<4;i++){
+			printf ("masang?");
+			scanf ("%d, &pasang);
+			if (pasang = 1){
+				printf ("pasang dimana");
+				scanf ("%d, &g);
+				bom2[g]=1;
+			}
+		}
+		main2=0;
+		main1=1;
 	}
-
-	printf("\nRIP Kepiting");
-	kepiting=0;
 	exit(0);
     }
 
