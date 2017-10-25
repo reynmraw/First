@@ -22,10 +22,10 @@ void* playandcount(void *arg)
     {
 	
 	
-       		 system("clear");
+       		 
        		 for(iter;iter>0;)
        	        {
-           	 	printf("\n %i",iter);
+           	 	printf("\n nyawa lohan %i",iter);
            	 	fflush(stdout);
            	 	sleep(1);
 		 	iter-=15;
@@ -38,10 +38,10 @@ void* playandcount(void *arg)
     else if(pthread_equal(id,tid[1]))
     {
        
-		system("clear");
+		
 		for(jir;jir>0;)
 		{
-			printf("\n %i",jir);
+			printf("\n nyawa kepiting %i",jir);
 			fflush(stdout);
 			sleep(2);
 			jir-=10;
@@ -52,22 +52,18 @@ void* playandcount(void *arg)
 	exit(0);
     }
  
-    else if(pthread_equal(id,tid[2]))
+    if(pthread_equal(id,tid[2]))
     {
-
-
-	while(1)
+	while(jir<=100 || iter<=100)
 	{
-		printf("\n1.Kasih makan lohan\n2.Kasih makan kepiting\n");
+		printf("1.Kasih makan lohan\n2.Kasih makan kepiting\n");
 		scanf("%d",&pilihan);
 		if(pilihan==1) iter+=10;
 		else if(pilihan==2) jir+=10;
-		if (jir>100 || iter>100)
-			{
-				printf("kepenuhan kolamnya");
-				exit(0);
-			}
+		
 	}
+	printf("Kolam Overload");
+	exit(0);
     }
 return NULL;
 }
@@ -80,8 +76,8 @@ int main(void)
         err=pthread_create(&(tid[i]),NULL,&playandcount,NULL);//membuat thread
         i++;
     }
-    pthread_join(tid[2],NULL);
     pthread_join(tid[0],NULL);
     pthread_join(tid[1],NULL);
+    pthread_join(tid[2],NULL);
     return 0;
 }
